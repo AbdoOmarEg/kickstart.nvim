@@ -110,7 +110,9 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
+  -- HACK: maybe remove
   { 'folke/which-key.nvim', opts = {} },
+  -- HACK: remove for now
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -131,6 +133,7 @@ require('lazy').setup({
     },
   },
 
+  -- HACK: checkout github-nvim-theme too, and choose what you like more
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -140,6 +143,8 @@ require('lazy').setup({
     end,
   },
 
+  --HACK: leave it then remove later
+  --replace it with hierline astronvim config, looks better
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -154,6 +159,7 @@ require('lazy').setup({
     },
   },
 
+  --HACK: make it with the rainbow setup
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -165,6 +171,7 @@ require('lazy').setup({
     },
   },
 
+  --HACK: change it to leader /
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
@@ -258,6 +265,26 @@ vim.o.termguicolors = true
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
+--HACK: see the primeagen keymaps file
+--HACK: and remember to make accept with ctrl y and next ctrl n, prev ctrl p enter with ctrl j or ctrl m
+-- leader w save and <C-q> exits
+-- buffers keymaps [b ]b
+-- harpoon with leader h and leader a to add
+-- commands runner from nycrat
+-- zenmode
+-- undotree
+-- learn how to resize windows
+-- splits | \
+-- https://github.com/j-morano/buffer_manager.nvim this might be better than harpoon
+-- dap
+-- git
+-- Next Hunk	]g
+-- Previous Hunk	[g
+-- as far as I know, that's it, yeah I think that's it, good luck :)
+-- nvim notify
+-- dressing nvim might be helpful for telescope but I don't know
+-- lspkind, I don't know if it is helpful or not, so don't get it then see what it's all about at the end
+-- get colorizer and make it false, just in case if you did css
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
@@ -277,6 +304,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+--HACK: do astronvim or primeagen keymaps
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -313,6 +341,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
+  --HACK: remove extras
+  --HACK: and check theses settings cuz I think I don't have it on astronvim and I don't need it
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -376,6 +406,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Diagnostic keymaps
+--HACK: leader k and other stuff with space l for the rest except for exceptions and g l
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
@@ -434,6 +465,7 @@ end
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
+--  HACK: do the rust intellisense stuff or codelldb I don't know it's name
 local servers = {
   -- clangd = {},
   -- gopls = {},
@@ -472,11 +504,13 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
-  end
+  end,
 }
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
+-- HACK: <C-u> <C-d> add those
+-- HACK: and <C-e>
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -525,3 +559,4 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+-- HACK: setup zellij
